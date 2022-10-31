@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos</title>
+    <style>
+        .contPers{
+            background-color: #00008b;
+            color: #fff;
+            text-align: center;
+            width: 150px;
+            padding: 50px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Evento - onclick</h2>
+    <button onclick="carConteudo()">Carregar conteúdo</button>
+    <p id="conteudo"></p>
+
+    <h2>Eventos - onmousover e onmouseout</h2>
+    <div onmouseover="mouseOver()" onmouseout="mouseOut()" class="contPers" id="mouseAlt">Passe o mouse</div>
+
+    <!-- onchange: executa o evento ao realizar uma mudança no campo, quando sair -->
+    <!-- onkeyup: executa o evento ao teclar algo -->
+    <h2>Eventos - onchange e onkeyup</h2>
+    <form>
+        Nome: <input type="text" name="nome" id="nome" onchange="converterTexto()"><br><br>
+        
+        <div id="erroSenha"></div>
+        Senha: <input type="password" name="senha" id="senha" onkeyup="validarSenha()"><br><br>
+    </form>
+
+    <script src="personalizado.js"></script>
+</body>
+</html>

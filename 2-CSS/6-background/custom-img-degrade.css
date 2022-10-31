@@ -1,0 +1,5 @@
+body{
+    background-image: url(imagem/fundo-degrade.png); /* define imagem de fundo */
+    background-repeat: repeat-x;  /* repete somente na direção x */
+    /*background-repeat: repeat-y; /* repete somente na direção y */
+}

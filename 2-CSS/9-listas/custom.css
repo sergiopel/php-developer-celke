@@ -1,0 +1,21 @@
+body{
+    background-color: #e8e8e8;
+    color: #2d49a6;
+}
+
+ul{
+    background-color: #3399ff;
+    /* padding indica onde o texto comecará a aparecer, e os 4 números abaixo se referem a cima, direta, baixo, esquerda, ou seja, no
+    sentido horário */
+    padding: 20px 0 20px 40px;
+}
+
+ul li{
+    background-color: #cce5ff;
+    /* margin define espaço entre um item e outro */
+    /* os 2 números abaixo se referem a também na ordem de sentido
+    horário e neste caso seria cima, direta e se repete os mesmos
+    valores para baixo e esquerda, então representa uma abreviação
+    de 5px 0 5px 0 */
+    margin: 5px 0;
+}

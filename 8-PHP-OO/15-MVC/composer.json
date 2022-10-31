@@ -1,0 +1,16 @@
+{
+    "description": "Serpel Projeto PHP OO",
+    "authors": [
+        {
+            "name": "Sergio",
+            "email": "serpel@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Sts\\": "app/sts",
+            "Core\\": "core"
+        }
+    },
+    "require": {}
+}

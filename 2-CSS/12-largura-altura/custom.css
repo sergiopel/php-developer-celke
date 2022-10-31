@@ -1,0 +1,22 @@
+body{
+    background-color: #e8e8e8;
+    color: #2d49a6;
+}
+
+header{
+    /* largura */
+    /*width: 200px;*/
+    width: 100%;
+    /* altura */
+    height: 200px;
+    background-color: #ffd700;
+}
+
+nav{
+    max-width: 100%;
+    min-width: 100px;
+
+    min-height: 50px;
+    max-height: 50px;
+    background-color: #008000;
+}

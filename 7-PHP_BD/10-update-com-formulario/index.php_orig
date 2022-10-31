@@ -1,0 +1,122 @@
+<?php
+include_once "conexao.php";
+?>
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sergio - Update</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+</head>
+
+<body>
+    <h2>Editar usuário</h2>
+    <?php
+    //Salvar as informações do usuário do formulário para o banco de dados ao clicar no botão Atualizar
+    //A linha abaixo obtém os dados do formulário ao clicar no botão Atualizar
+    $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+    // Ao clicar no botão com name="Upusuario", carrega o value="Atualizar", então não é vazio
+    // Esse if fará o update na tabela
+    if (!empty($dados['Upusuario'])) {
+        var_dump($dados);
+        try {
+            $query_up_usuario = "UPDATE usuarios SET nome=:nome, email=:email, senha=:senha, sits_usuario_id=:sits_usuario_id, niveis_acesso_id=:niveis_acesso_id, modified=NOW() WHERE id=:id";
+            $up_usuario = $conn->prepare($query_up_usuario);
+            $up_usuario->bindParam(':nome', $dados['nome'], PDO::PARAM_STR); //essa terceira parte iniciada por PDO:: não é obrigatório
+            $up_usuario->bindParam(':email', $dados['email']);
+            // criptografar a senha para atualizar na tabela
+            $senha_cript = password_hash($dados['senha'], PASSWORD_DEFAULT);
+            $up_usuario->bindParam(':senha', $senha_cript);
+            $up_usuario->bindParam(':sits_usuario_id', $dados['sits_usuario_id'], PDO::PARAM_INT);
+            $up_usuario->bindParam(':niveis_acesso_id', $dados['niveis_acesso_id']);
+            $up_usuario->bindParam(':id', $dados['id']);
+
+            if ($up_usuario->execute()) {
+                echo "Usuário editado com sucesso!";
+            } else {
+                echo "Erro: O usuário não foi editado com sucesso!";
+            }
+        } catch (PDOException $erro) {
+            echo "Erro: O usuário não foi editado com sucesso!";
+            //echo "Erro: O usuário não foi editado com sucesso! Erro gerado: " . $erro->getMessage() . "<br>";
+        }
+    }
+
+    // Receber o id pela URL utilizando o método GET
+    // Ex: http://localhost/PHP%20Developer%20-%20Celke/7-PHP_BD/10-update-com-formulario/index.php?id_usuario=17
+    //$id = filter_input(INPUT_GET, "id_usuario", FILTER_SANITIZE_NUMBER_INT);
+
+    // Id do usuário estático
+    $id = 2;
+
+    //Pesquisar as informações do usuário no banco de dados para trazer preenchido no formulário
+    $query_usuario = "SELECT id, nome, email, sits_usuario_id, niveis_acesso_id FROM usuarios WHERE id=:id";
+    $result_usuario = $conn->prepare($query_usuario);
+    $result_usuario->bindParam(':id', $id, PDO::PARAM_INT);
+    $result_usuario->execute();
+
+    $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
+    //var_dump($row_usuario);
+
+
+    ?>
+
+    <form method="POST" action="">
+        
+        <input type="hidden" name="id" value="<?php if (isset($row_usuario['id'])) {
+                                                    echo $row_usuario['id'];
+                                                } ?>" required><br><br>
+        <label>Nome: </label>
+        <input type="text" name="nome" placeholder="Nome do usuário" value="<?php if (isset($row_usuario)) {
+                                                                                echo $row_usuario['nome'];
+                                                                            } ?>" required><br><br>
+
+        <label>E-mail: </label>
+        <input type="email" name="email" placeholder="E-mail do usuário" value="<?php if (isset($row_usuario)) {
+                                                                                    echo $row_usuario['email'];
+                                                                                } ?>" required><br><br>
+
+        <label>Senha: </label>
+        <input type="password" name="senha" placeholder="Senha do usuário" required><br><br>
+
+        <?php
+            $query_sits_usuarios = "SELECT id, nome FROM sits_usuarios ORDER BY nome ASC";
+            $result_sits_usuarios = $conn->prepare($query_sits_usuarios);
+            $result_sits_usuarios->execute();
+        ?>
+        <label>Situação: </label>
+        <select name="sit_usuario_id">
+            <option value="">Selecione</option>
+            <?php
+                while($row_sits_usuario = $result_sits_usuarios->fetch(PDO::FETCH_ASSOC)){
+                    extract($row_sits_usuario);
+                    $select_sist_usuario = ""; 
+                    //$dados contém os dados lidos do formulário
+                    //Se clicar no botão "Atualizar" e a situação do usuário for igual à situação lida na tab. sits_usuarios, seleciona
+                    if(isset($dados['sits_usuario_id']) && ($dados['sits_usuario_id'] == $id)){
+                        $select_sist_usuario = "selected";
+                    /*se não clicar no botão "Atualizar" e a situação do usuário estiver preenchida no formulário e a mesma for igual à situação lida na tabela sits_usuarios, seleciona*/
+                    }elseif(((!isset($dados['sits_usuario_id'])) && (isset($row_usuario['sits_usuario_id']))) && ($row_usuario['sits_usuario_id'] == $id)){
+                        $select_sist_usuario = "selected";
+                    }
+                    echo "<option value='$id' $select_sist_usuario>$nome</option>";
+                }
+            ?>
+
+        </select><br><br>
+        
+        <label>Nível de acesso: </label>
+        <input type="number" name="niveis_acesso_id" placeholder="Nível de acesso do usuário" value="<?php if (isset($row_usuario)) {
+                                                                                                            echo $row_usuario['niveis_acesso_id'];
+                                                                                                        } ?>" required><br><br>
+
+        <input type="submit" name="Upusuario" value="Atualizar">
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+# .htaccess serve para configurar uma url amigável
+
+# 1 - Ativar módulo de reescrita
+RewriteEngine On
+
+# 2 - A reescrita somente será utilizada se não existir o diretório ou arquivo digitado pelo usuário na url
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+
+# 3 - A partir da página onde está o projeto, irá pegar o restante da url digitado pelo usuário
+#     e vai redirecionar para o arquivo index.php e armazenar na variável url (na frente do index.php).
+#     Depois do blog/index o que for digitado, a instrução [QSA,L] é que faz a captura
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+#exemplo: index.php?url=blog/index&origem=facebook&qualvariavel=5
+
+# Para receber tudo o que foi digitado pelo usuário a mais ( blog/index&origem=facebook&qualvariavel=5 ),
+# quem recebe é o ConfigController.php

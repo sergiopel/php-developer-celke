@@ -1,0 +1,20 @@
+body{
+    background-color: #e8e8e8;
+    color: #2d49a6;
+}
+
+.texto_dois{
+    display: none; /* oculta a informação sem ocupar espaço na tela */
+}
+
+.texto_quatro{
+    visibility: hidden;
+}
+
+.texto_seis{
+    display: block; /* apresenta a informação oculta */
+}
+
+li{
+    display: inline;
+}

@@ -1,0 +1,72 @@
+body{
+    background-color: #e8e8e8;
+    color: #2d49a6;
+}
+
+.pontilhada{
+    border-style: dotted;
+}
+
+.tracejada{
+    border-style: dashed;
+}
+
+.solida{
+    border-style: solid;
+}
+
+.dupla{
+    border-style: double;
+}
+
+.ranhura{
+    border-style: groove;
+}
+
+.cume{
+    border-style: ridge;
+}
+
+.inset{
+    border-style: inset;
+}
+
+.outset{
+    border-style: outset;
+}
+
+.largura_borda{
+    border-width: 10px;
+    border-style: solid;
+    border-color: #ffd700;
+}
+
+.cor_borda_dif{
+    border-width: 10px;
+    border-style: solid;
+    /* cada borda de uma cor, no sentido horário, começando de cima */
+    border-color: #ff0000 #ffff00 #00ffff #4b0082; 
+}
+
+.cor_borda_dif_per{
+    background-color: #ffd700;
+    /* já uso diretamente a largura, tipo e cor*/ 
+    border-top: 15px solid #008000;
+    border-right: 6px dashed #4b0082;
+    border-bottom: 15px double #00ffff;
+    border-left: 6px dotted #ff0000;
+}
+
+.borda_arredondada{
+    border: 2px solid #008000;
+    border-radius: 10px;
+}
+
+.circulo{
+    border: 5px solid #4b0082;
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+
+}

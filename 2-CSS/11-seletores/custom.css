@@ -1,0 +1,39 @@
+body{
+    background-color: #e8e8e8;
+    color: #2d49a6;
+}
+/* Seletor tipo */
+h1{
+    color: green;
+}
+p{
+    color: green;
+}
+/* seletor descendente, é quando personalizamos uma tag mais pra dentro */
+p span{
+    color: red;
+}
+
+/* seletor pseudo-classe (classe pré-definida) */
+a:hover{
+    color: gold;
+}
+
+/* Seletor ID, usa-se uma única vez e no css
+inicia-se por hashtag*/
+#menu{
+    color: blue;
+}
+
+#conteudo{
+    color: indigo;
+}
+
+/* Seletor tipo class, pode ser usado mais de uma vez no html e no css é identificado por ponto */
+.cont_destaq{
+    color: orange;
+}
+
+.mais_acessado{
+    font-size: 23px;
+}

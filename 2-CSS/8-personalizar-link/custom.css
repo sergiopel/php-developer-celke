@@ -1,0 +1,25 @@
+body{
+    background-color: #e8e8e8;
+    color: #2d49a6;
+}
+
+/* define a cor do link quando o usuário ainda não visitou*/
+a:link{
+    text-decoration: none;
+    color: #334d5c;
+}
+
+/* quando o usuário visitou o link */
+a:visited{
+    color: #e07c45;
+}
+
+/* passar o mouse sobre o link */
+a:hover{
+    color: #f2cd00;
+}
+
+/* link selecionado */ 
+a:active{
+    color: #00bf9b;
+}

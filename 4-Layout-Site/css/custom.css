@@ -1,0 +1,630 @@
+/*importação de novas fontes de caracteres do google*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+/*zera todos os espaços padrões iniciais*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none; /* tira a decoração de todos os lugares do site (que é o sublinhado embaixo do link (href) */
+}
+
+/*criação de variáveis globais*/
+:root{
+    /*pode ser qualquer nome aqui*/
+    --main-color: #040614;
+    --site-color:  #fff;
+    --active-color: #0063e5;
+    --first-color: #08132f;
+    --second-color: #090b13;
+    --third-color: #1b202a;
+}
+
+body{
+    background-color: var(--main-color);
+    color: var(--site-color);
+}
+
+.max-width{
+    max-width: 1300px; /* largura máxima de 1300 pixels*/
+    padding: 0 10px; /* 0px em cima e embaixo e 10px na direita e na esquerda */
+    margin: auto; /*centraliza o conteúdo*/
+}
+
+/* inicio menu */
+.navbar .logo a{ /* personalizar o logo que está na tag a, sendo que está dentro da class logo, que está dentro da class navbar */
+    color: var(--active-color);
+    font-size: 35px; /* tamanho da fonte*/
+    font-weight: 500; /*espessura da fonte*/
+}
+
+.navbar{
+    position: fixed; /*posição fixa na parte superior*/
+    width: 100%; /*deve ocupar 100% do espaço disponível */
+    z-index: 999; /* na aula não teve explicação */
+    padding: 20px 0; /* 20px na parte superior e inferior e 0px nas laterais direita e esquerda*/
+    font-family: 'Ubuntu', sans-serif; /* fonte Ubuntu foi importada na primeira linha*/
+    background-color: var(--main-color);
+    border-bottom: solid var(--third-color) 1px;
+
+}
+
+.navbar .max-width{
+    display: flex; /* dispõe conteúdo relacionado numa única linha */
+    align-items: center; /* alinha os elementos ao centro */
+    justify-content: space-between; /* distribui espaços iguais entre os elementos */
+}
+
+.navbar .menu li{
+    list-style: none; /* retira os ícones da frente da lista li*/
+    display: inline-block; /* coloca os 3 itens da lista lado a lado, numa única linha */
+    /*display: block;*/
+}
+
+.navbar .menu li a{
+    display: block; /* retira os ícones da frente da lista li */
+    color: var(--site-color);
+    font-size: 18px;
+    font-weight: 400; /*espessura da fonte*/
+    margin-left: 25px; /* margem esquerda entre os elementos*/
+}
+
+.menu-btn{
+    color: var(--site-color);
+    font-size: 23px;
+    cursor: pointer; /* mostra o ícone como clicável (mãozinha)*/
+    display: none;
+}
+
+@media (max-width: 947px){ /* se a largura da tela for de celular ou tablet, com no máximo 947px, apresenta o ícone de menu na tela */
+    .menu-btn{
+        display: block;
+        z-index: 999;
+    }
+
+    #menu-icon.active::before{
+        content: "\f00d";
+    }
+
+    .navbar .menu{ /*como deve aparecer os itens de menu se a tela for pequena,
+        neste momento some os itens de mennu Home, Sobre Empresa e Contato */
+        background-color: var(--main-color);
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        left: -100%;
+        top: 0;
+        text-align: center;
+        padding-top: 80px;
+        transition: all 0.3s ease; /*transição mais suave ao clicar no icone menu*/
+    }
+
+    #menu-site.active{ /* carrega os itens de menu, só quando estiver ativo*/
+        left: 0;
+    }
+
+    .navbar .menu li{ /* não apresentar os itens de menu*/
+        display: block;
+    }
+
+    .navbar .menu li a{
+        display: inline-block;
+        margin: 13px 0;
+        font-size: 25px;
+    }
+}
+
+/* fim menu */
+
+
+/* inicio do topo */
+section{
+    padding: 50px 0;
+}
+
+@media (max-width: 690px){ /* se a largura máxima do dispositivo for 690px */
+    section{
+        padding: 20px 0;
+    }
+}
+
+.top{
+    color: var(--site-color);
+    display: flex; /* dispõe conteúdo relacionado numa única linha */
+    /* a instrução no-repeat é para a imagem não ficar se repetindo, se ela for pequena */
+    /*background: url("../images/imagem-ti.jpg") no-repeat center;*/
+    /* colocar um gradiente da direita para a esquerda na cor azul escuro var(--main-color), com transparência 25% com o objetivo de escurecer um pouco a imagem do lado esquerdo, afim de aparecer mais os textos que estão na cor branca*/
+    background: linear-gradient(to right, var(--main-color) 20%, rgba(255,255,255,0)), url("../images/imagem-ti.jpg") no-repeat center;
+    height: 100vh; /* ocupar 100% da altura na página*/
+    min-height: 500px;
+    /*a imagem cobre o container inteiro na altura e na largura*/
+    background-size: cover;
+    /* determina que a imagem fica fixa na tela e não vai rolar junto com a página*/
+    background-attachment: fixed;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.top .max-width{
+    width: 100%;
+    display: flex; /* dispõe conteúdo relacionado numa única linha */
+}
+
+.top .top-content .text-1{
+    font-size: 25px;
+}
+
+.top .top-content .text-2{
+    font-size: 55px;
+    font-weight: 400; /*espessura da fonte*/
+    margin-left: -3px;
+}
+
+.top .top-content .text-3{
+    font-size: 32px;
+    margin: 5px 0;
+}
+
+.top .top-content a{ /*personalizando o href para ficar no formato de um botão */
+    display: inline-block;
+    background: var(--active-color);
+    color: var(--site-color);
+    font-size: 25px;
+    padding: 12px 36px;
+    margin-top: 20px;
+    font-weight: 300; /*espessura da fonte*/
+    border-radius: 6px; /*borda arredondada*/
+    /*colocando borda azul, que será visualizada quando o usuário passar o mouse na personalização abaixo*/
+    border: 2px solid var(--active-color);
+    transition: all 0.3s ease;
+}
+
+/*quando o usuário passar o mouse, ocultar a cor de fundo e mudar a cor do texto para azul*/
+.top .top-content a:hover{
+    color: var(--active-color);
+    background: none;
+}
+
+/* fim do topo */
+
+/* início serviço */
+.services{
+    color: var(--site-color); /*branco definido nas variáveis*/
+    background-color: var(--main-color);
+    font-family: 'Poppins', sans-serif;
+    margin: 60px; /* 60px em todos os lados */
+}
+
+.services .title{
+    text-align: center;
+    margin: 40px 0; /* 40px margem superior e inferior e 0px nas laterais direta e esquerda*/
+    font-weight: 400; /*espessura da fonte*/
+    font-size: 35px; /* tamanho da fonte*/
+}
+
+.services .serv-content{
+    display: flex; /*coloca o conteúdo numa linha só*/
+    flex-wrap: wrap; /*mostrou o texto inteiro, mas quebrou a apresentação do terceiro div*/
+    align-items: center;
+    justify-content: space-between; /*espaço entre eles*/
+
+}
+
+/* personalização dos cards */
+.services .serv-content .card{
+    width: calc(33% - 20px);
+    background: var(--first-color);
+    text-align: center;
+    border-radius: 6px; /*borda arredondada*/
+    padding: 50px 25px; /*espaçamento entre os elementos de cada card, cima e baixo: 50px, direita e esquerda: 25px*/
+    cursor: pointer; /*ao passar o mouse no card, muda o ponteiro do mouse como clicável (mãozinha)*/
+    transition: all 0.3s ease; /* suavisa a transição ao passar o mouse em cima*/
+}
+
+/*personalização do card ao passar o mouse, altera a cor de fundo do card*/
+.services .serv-content .card:hover{
+    background: var(--active-color); /*azul*/
+}
+
+/*personalizar o ícone e a transição precisa acompanhar a transição do restante do card*/
+.services .serv-content .card i{
+    font-size: 50px;
+    color: var(--active-color);
+    transition: all 0.3s ease;
+}
+
+/*personalização do ícone ao passar o mouse*/
+.services .serv-content .card:hover i{
+    color: var(--site-color); /*branco*/
+}
+
+.services .serv-content .card .box{
+    transition: all 0.3s ease;
+}
+
+/* ao passar o mouse aumenta a escala de todo o conteúdo do box*/
+.services .serv-content .card:hover .box{
+    transform: scale(1.05);
+}
+
+/*personalizar os textos 'Wifi veloz', 'Espaço Inspirador' e 'Reuniões'*/
+.services .serv-content .card .text{
+    font-size: 25px;
+    font-weight: 500;
+    margin: 10px 0 7px 0; /*ordem relógio, começando de cima e terminando na esquerda*/
+}
+
+/* personalizar para dispositivos menores (móveis)*/
+@media (max-width: 947px){
+    .services .serv-content .card{
+        width: calc(50% - 10px); /*o objetivo é mostrar apenas 2 cards quando o dispositivo for menor*/
+        margin-bottom: 20px; /*para desgrudar o terceiro card do primeiro*/
+    }
+}
+
+/* quando o @media é referente a um mesmo tamanho, poderia juntar tudo num só, o prof. só não juntou pra ficar mais fácil de explicar*/
+/*quando a tela do usuário for ainda menor, mostar apenas uma coluna de card*/
+@media (max-width: 690px){
+    .services .serv-content .card{
+        width: 100%;
+    }
+}
+
+/* Fim serviço */
+
+
+/* Início do serviço premium */
+.premium{
+    color: var(--site-color);
+    background: var(--first-color);
+    font-family: 'Poppins', sans-serif;
+}
+
+.premium .title{
+    text-align: center;
+    margin: 50px 0;
+    font-weight: 400;
+    font-size: 35px;
+}
+
+.premium .premium-content{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* lateral esquerda do Serviço Premium (imagem)*/
+.premium .premium-content .left{
+    width: 45%;
+}
+
+/* personalização da imagem */
+.premium .premium-content .left img{
+    width: 450px;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 6px;
+
+}
+
+/* lateral direita do Serviço Premium (texto)*/
+.premium .premium-content .right{
+    width: 55%;
+}
+
+/* personalização do primeiro texto lado direito*/
+.premium .premium-content .right .text{
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 10px;
+
+}
+
+.premium .premium-content .right p{
+    text-align: justify;
+}
+
+/* personalização do link Contato - ficará no formato de botão */
+.premium .premium-content .right a{
+    /* o display: inline-block serviu para não colar o botão com o texto de cima, isso ocorreria no momento em que seta o padding abaixo se não tivesse esse display*/
+    display: inline-block;
+    background: var(--active-color); /*azul*/
+    color: var(--site-color); /*texto branco*/
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px 30px;
+    margin-top: 20px;
+    border-radius: 6px;
+    /*borda azul da mesma cor do background, entã até aqui não se nota diferença; a borda será notada quando passar o mouse em cima na outra personalização abaixo*/
+    border: 2px solid var(--active-color); /*azul*/
+    /* transição para mudar a cor do botão ao passar o mouse em cima, mais suave*/
+    transition: all 0.3s ease;
+}
+
+.premium .premium-content .right a:hover{
+    color: var(--active-color);
+    background: none; /*fundo transparente*/
+}
+
+/*configuração da parte serviço premium quando for dispositivo com tela menor*/
+@media (max-width: 1104px){ /*aqui o max-width não é o seletor do class, mas sim uma propriedade do @media, portanto, sem o ponto antes*/
+    .premium .premium-content .left img{
+        width: 400px; /*largura*/
+        height: 330px; /*altura*/
+    }
+}
+
+@media (max-width: 947px){
+    /* personalizando só a coluna com 100%, faz com que quando diminuir ainda mais a tela, seja apresentado somente a imagem numa linha e somente o texto na linha de baixo*/
+    .premium .premium-content .column{
+        width: 100%;
+    }
+    .premium .premium-content .left{
+        display: flex;
+        justify-content: center;
+        margin: 0 auto 60px;
+    }
+    .premium .premium-content .right{
+        flex: 100%;
+    }
+}
+
+/* Fim do serviço premium */
+
+
+/* Início do rodapé */
+
+footer{
+    background: var(--second-color);
+    padding: 25px 23px;
+    color: var(--site-color);
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+footer span a{
+    color: var(--active-color);
+}
+
+footer span a:hover{
+    color: var(--site-color);
+}
+/* Fim do rodapé */
+
+
+/* Início da página Sobre Empresa*/
+
+.about{
+    color: var(--site-color);
+    background: var(--main-color);
+    font-family: 'Poppins', sans-serif;
+}
+
+.about .title{
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 400;
+    font-size: 35px;
+    padding-top: 50px;
+}
+
+.about .about-content{ /*about-content inclui os lados esquerdo(imagem) e direito(texto)*/
+    display: flex; /* deixar imagem e texto lado a lado*/
+    flex-wrap: wrap; /*faz a quebra de linha, quando atinge o espaço máximo; essa instrução só terá efeito quando for implememtado a largura de 60% mais abaixo*/
+    align-items: center; /*alinha imagem e texto ao centro*/
+    justify-content: space-between;
+    margin-bottom: 50px;
+    background: var(--first-color);
+    border-radius: 30px;
+    padding: 30px;
+}
+
+.about .about-content .left{ /*personalização da imagem*/
+    width: 40%;
+}
+
+.about .about-content .left img{
+    width: 400px;
+    height: 400px;
+    object-fit: cover; /* a imagem foi redimensionada em 400 x 400 acima, e com essa instrução ela é cortada para preservar sua proporção (sem esticá-la) */
+    border-radius: 6px;
+}    
+
+.about .about-content .right{ /*personalização do texto*/
+    width: 60%;
+}
+
+.about .about-content .right .text{ 
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.about .about-content .right p{ 
+    text-align: justify;
+}
+
+@media(max-width: 1104px){
+    .about .about-content .left img{ /* diminui imagem */
+         width: 300px;
+         height: 300px;
+    }
+    .about .about-content .right{
+        padding-left: 10px;
+    }
+}
+
+@media (max-width: 947px){
+    .about .about-content .column{
+        width: 100%;
+    }
+    .about .about-content .left{ /* personalização do lado da imagem*/
+        display: flex;
+        justify-content: center;
+        margin: 0 auto 60px;
+    }
+
+    .about .about-content .right{ /*agora é a personalização do texto*/
+        flex: 100%;
+        padding-left: 0;
+    }
+
+}
+
+@media(max-width: 710px){
+    .about .title{
+        margin-top: 30px;
+    }
+}
+
+/* Fim da página Sobre Empresa*/
+
+
+/* Início da página Contato*/
+.contact{
+    color: var(--site-color);
+    background-color: var(--main-color); /* tanto faz background-color ou somente background, conforme personalização mais acima*/
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact .title{
+    text-align: center;
+    margin-bottom: 50px;
+    padding-top: 50px;
+    font-weight: 400;
+    font-size: 35px;
+}
+
+.contact .contact-content{
+    display: flex; /*puxar pra mesma linha*/
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* separa em 2 colunas de 50%; aqui subtraiu 30px, então dará um espaçamento entre as colunas, pois acabou não sendo exatamente 50% */
+.contact .contact-content .column{
+    width: calc(50% - 30px);
+}
+
+.contact .contact-content .left p{ /* justificando o texto do parágrafo*/
+    text-align: justify;
+}
+
+.contact .contact-content .left .icons{
+    margin: 10px 0;
+}
+
+.contact .contact-content .row{
+    display: flex; /*puxar pra mesma linha*/
+    height: 65px;
+    align-items: center;
+}
+
+.contact .contact-content .row .info{
+    margin-left: 30px;
+}
+
+.contact .contact-content .row i{
+    font-size: 25px;
+    color: var(--active-color);
+}
+
+.contact .contact-content .info .head{
+    font-weight: 500;
+}
+
+.contact .contact-content .info .sub-title{
+    color: var(--site-color);
+}
+
+.contact .contact-content .text{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.contact .right form .field,
+.contact .right form .fields .field{
+    height: 45px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.contact .right form .textarea{
+    height: 80px;
+    width: 100%;
+}
+
+/* essa personalização é pro input e pro textarea, então não precisa duplicar, é só colocar o caminho dos seletores e separar por vírgula*/
+.contact .right form .field input,
+.contact .right form .field textarea{
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    outline: none; /*retira o contorno do elemento*/
+    padding: 0 10px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.contact .right form .field input:focus,
+.contact .right form .field textarea:focus{
+    border-color: var(--active-color);
+    /*border-color: solid var(--active-color) 2px;*/
+}
+
+.contact .right form .textarea textarea{
+    padding-top: 10px;
+    resize: none; /*não deixa o usuário redimensionar o campo textarea*/
+}
+
+.contact .right form .button-area{
+    display: flex;
+    align-items: center;
+}
+
+.contact .right form .button-area button{
+    background-color: var(--active-color);
+    color: var(--site-color);
+    display: block;
+    width: 160px !important; /*destaca*/
+    height: 45px;
+    outline: none;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 6px;
+    cursor: pointer;
+    flex-wrap: wrap;
+    border: 2px solid var(--active-color);
+    transition: all 0.3s ease;
+}
+
+.contact .right form .button-area button:hover{
+    color: var(--active-color);
+    background: none;
+}
+
+/* se a tela do dispositivo for pequena, ocupar 100% do lado esquerdo e 100% do direito, colocando-os um abaixo do outro*/
+@media (max-width: 947px){
+    .contact .contact-content .column{
+        width: 100%;
+        margin-bottom: 35px;
+    }
+}
+
+/* se a tela for ainda menor, dar um espaço entre o título e o cabeçalho*/
+@media (max-width: 500px){
+    .contact .title{
+        margin-top: 50px;
+    }
+    .contact .right form .fields{ /* se refere aos campos nome e e-mail*/
+        flex-direction: column;
+    }
+    .contact .right form .name,
+    .contact .right form .email{
+        margin: 0;
+    }
+}
+
+/* Fim da página Contato*/
