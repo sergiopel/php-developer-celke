@@ -1,0 +1,15 @@
+{
+    "description": "Projeto Sergio",
+    "authors": [
+        {
+            "name": "Sergio",
+            "email": "serpel@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core"
+        }
+    },
+    "require": {}
+}

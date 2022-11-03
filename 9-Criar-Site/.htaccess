@@ -1,0 +1,24 @@
+# permite a reescrita da url
+RewriteEngine On
+
+# só se aplica se não existir o diretório
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# só se aplica se não existir o arquivo
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# verifica se o resultado do teste é um caminho simbólico
+RewriteCond %{REQUEST_FILENAME} !-l
+
+# essa diretiva é responsável pela reescrita da url
+# pega todo o conteúdo depois da raiz da url
+# redireciona para o arquivo index.php
+# url=$1 recebe o que for digitado depois da raiz da url
+# O QSA pega o que vem depois do & da url exemplo
+RewriteRule ^(.+)$ index.php?url=$1 [QSA]
+
+#exemplo: index.php?url=contato/index&artigo=1
+
+
+
+parei no minuto 18:25
