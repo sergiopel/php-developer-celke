@@ -21,4 +21,4 @@ RewriteRule ^(.+)$ index.php?url=$1 [QSA]
 
 
 
-parei no minuto 18:25
+#parei no minuto 18:25
