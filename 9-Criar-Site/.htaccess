@@ -14,11 +14,9 @@ RewriteCond %{REQUEST_FILENAME} !-l
 # pega todo o conteúdo depois da raiz da url
 # redireciona para o arquivo index.php
 # url=$1 recebe o que for digitado depois da raiz da url
-# O QSA pega o que vem depois do & da url exemplo
-RewriteRule ^(.+)$ index.php?url=$1 [QSA]
+# O [QSA,L] pega o que vem depois do ? da url exemplo
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
 
-#exemplo: index.php?url=contato/index&artigo=1
+#exemplo: localhost/celke/contato/index?artigo=1 (url enviada)
+#exemplo: index.php?url=contato/index&artigo=1&origem=email (aqui recebe)
 
-
-
-#parei no minuto 18:25
