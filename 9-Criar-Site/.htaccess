@@ -17,6 +17,6 @@ RewriteCond %{REQUEST_FILENAME} !-l
 # O [QSA,L] pega o que vem depois do ? da url exemplo
 RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
 
-#exemplo: localhost/celke/contato/index?artigo=1 (url enviada)
+#exemplo: localhost/celke/contato/index?artigo=1&origem=email (url enviada)
 #exemplo: index.php?url=contato/index&artigo=1&origem=email (aqui recebe)
 
